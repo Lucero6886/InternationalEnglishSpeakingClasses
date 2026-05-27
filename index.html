@@ -1,0 +1,451 @@
+<!-- 
+Palette Chosen: Energetic Blue & Gold (#1E3A8A, #3B82F6, #F59E0B, #10B981)
+Mermaid JS was NOT used in this output. 
+SVG was NOT used anywhere in this output. 
+Narrative Plan:
+1. Hero/Introduction: Global theme, welcoming adult learners, bilingual toggle.
+2. Target Audience: Clear badge for Adult Learners & A2+ Requirement.
+3. Data Overview (Membership Tiers): Compare the 500k VNĐ (Basic) and 2.5M VNĐ (Premium) paths.
+4. In-Depth Analysis (Features): Radar chart to visually compare the focus areas of both tiers.
+5. Organize/Process (Payment): Local Bank Transfer + International PayPal.
+Visualization Choices:
+- Feature Comparison -> Compare/Relationships -> Radar Chart (Chart.js) -> Best shows the multi-dimensional differences between self-study community and native-led classes. NO SVG.
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Recruitment - Lucero English</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F0Fdf4;
+            background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #10B981;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #10B981;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-emerald-200">
+
+    <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        
+        <div class="flex justify-end mb-4 items-center gap-3">
+            <span class="text-xl">🇻🇳</span>
+            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" name="toggle" id="langToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-300 ease-in-out z-10"/>
+                <label for="langToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-blue-500 cursor-pointer"></label>
+            </div>
+            <span class="text-xl">🇬🇧</span>
+        </div>
+
+        <header class="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-800 rounded-3xl p-8 sm:p-12 text-white shadow-2xl mb-10 relative overflow-hidden border-b-4 border-amber-500">
+            <div class="absolute -right-10 -top-10 text-9xl opacity-20 transform rotate-12">🌍</div>
+            <div class="absolute -left-10 -bottom-10 text-9xl opacity-10 transform -rotate-12">🗣️</div>
+            
+            <div class="relative z-10 flex flex-col items-center text-center">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-amber-500 text-amber-950 font-bold text-sm mb-6 uppercase tracking-widest shadow-lg lang-text" data-vi="Tuyển Thành Viên Toàn Cầu" data-en="Global Member Recruitment">Tuyển Thành Viên Toàn Cầu</span>
+                
+                <h1 class="text-4xl sm:text-6xl font-black mb-6 leading-tight tracking-tight">
+                    <span class="lang-text" data-vi="Cộng Đồng Giao Tiếp Quốc Tế" data-en="International Communication Community">Cộng Đồng Giao Tiếp Quốc Tế</span>
+                    <br><span class="text-amber-400">Lucero English</span>
+                </h1>
+                
+                <p class="text-blue-100 text-lg sm:text-xl max-w-3xl font-light leading-relaxed mb-8 lang-text" data-vi="Môi trường kết nối những người học tiếng Anh trên toàn cầu. Phá bỏ rào cản ngôn ngữ, tự tin giao tiếp và mở rộng mạng lưới bạn bè quốc tế cùng Lucero." data-en="A dynamic environment connecting English learners worldwide. Break language barriers, communicate confidently, and expand your international network with Lucero.">
+                    Môi trường kết nối những người học tiếng Anh trên toàn cầu. Phá bỏ rào cản ngôn ngữ, tự tin giao tiếp và mở rộng mạng lưới bạn bè quốc tế cùng Lucero.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-3 flex items-center gap-3">
+                        <span class="text-2xl">🧑‍🤝‍🧑</span>
+                        <div class="text-left">
+                            <p class="text-xs text-blue-200 uppercase font-bold tracking-wider lang-text" data-vi="Đối Tượng" data-en="Target">Đối Tượng</p>
+                            <p class="font-bold lang-text" data-vi="Người Trưởng Thành" data-en="Adult Learners">Người Trưởng Thành</p>
+                        </div>
+                    </div>
+                    <div class="bg-amber-500/20 backdrop-blur-sm border border-amber-500/40 rounded-xl px-6 py-3 flex items-center gap-3">
+                        <span class="text-2xl">📈</span>
+                        <div class="text-left">
+                            <p class="text-xs text-amber-200 uppercase font-bold tracking-wider lang-text" data-vi="Yêu Cầu Đầu Vào" data-en="Requirement">Yêu Cầu Đầu Vào</p>
+                            <p class="font-bold text-amber-400 lang-text" data-vi="Trình độ A2 trở lên" data-en="A2 Level or above">Trình độ A2 trở lên</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <section class="lg:col-span-12 glass-card rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-blue-500 rounded-b-full"></div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4 lang-text" data-vi="Lựa Chọn Lộ Trình Của Bạn" data-en="Choose Your Pathway">Lựa Chọn Lộ Trình Của Bạn</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg lang-text" data-vi="Hai gói thành viên được thiết kế phù hợp với nhu cầu và ngân sách của từng cá nhân." data-en="Two membership tiers designed to fit individual learning needs and budgets.">Hai gói thành viên được thiết kế phù hợp với nhu cầu và ngân sách của từng cá nhân.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                    
+                    <div class="bg-white rounded-3xl p-8 border-2 border-slate-100 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 relative group flex flex-col h-full">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-3xl shadow-lg border-4 border-white group-hover:scale-110 transition-transform">🤝</div>
+                        <div class="pt-8 flex-grow">
+                            <h3 class="text-2xl font-black text-slate-800 mb-2 lang-text" data-vi="Thành Viên Cộng Đồng" data-en="Community Member">Thành Viên Cộng Đồng</h3>
+                            <p class="text-slate-500 mb-6 lang-text" data-vi="Tự do luyện tập & Kết nối toàn cầu" data-en="Self-practice & Global networking">Tự do luyện tập & Kết nối toàn cầu</p>
+                            <div class="mb-6">
+                                <span class="text-4xl font-black text-blue-600">500.000</span>
+                                <span class="text-lg font-bold text-slate-400">VNĐ</span>
+                                <span class="text-slate-400 block mt-1 lang-text" data-vi="/ Năm (~$20 USD)" data-en="/ Year (~$20 USD)">/ Năm (~$20 USD)</span>
+                            </div>
+                            <ul class="space-y-4 text-left text-slate-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 text-xl">✓</span>
+                                    <span class="lang-text" data-vi="Tham gia lớp luyện tập miễn phí cùng cộng đồng" data-en="Join free practice classes with the community">Tham gia lớp luyện tập miễn phí cùng cộng đồng</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 text-xl">✓</span>
+                                    <span class="lang-text" data-vi="Kết nối peer-to-peer với học viên quốc tế" data-en="Peer-to-peer connection with global learners">Kết nối peer-to-peer với học viên quốc tế</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 text-xl">✓</span>
+                                    <span class="lang-text" data-vi="Truy cập kho tài liệu giao tiếp độc quyền" data-en="Access to exclusive communication resources">Truy cập kho tài liệu giao tiếp độc quyền</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-b from-blue-50 to-white rounded-3xl p-8 border-2 border-amber-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative group flex flex-col h-full overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-amber-500 text-amber-950 font-bold px-4 py-1 rounded-bl-xl text-sm z-10 lang-text" data-vi="Đề Xuất" data-en="Recommended">Đề Xuất</div>
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-3xl shadow-lg border-4 border-white group-hover:scale-110 transition-transform">⭐</div>
+                        <div class="pt-8 flex-grow">
+                            <h3 class="text-2xl font-black text-slate-800 mb-2 lang-text" data-vi="Lớp Giáo Viên Quốc Tế" data-en="International Teacher Class">Lớp Giáo Viên Quốc Tế</h3>
+                            <p class="text-amber-600 mb-6 font-medium lang-text" data-vi="Phát triển phản xạ & Tương tác nhóm nhỏ" data-en="Reflex development & Small group interaction">Phát triển phản xạ & Tương tác nhóm nhỏ</p>
+                            <div class="mb-6">
+                                <span class="text-4xl font-black text-amber-500">2.500.000</span>
+                                <span class="text-lg font-bold text-slate-400">VNĐ</span>
+                                <span class="text-slate-400 block mt-1 lang-text" data-vi="/ Khóa học (~$100 USD)" data-en="/ Course (~$100 USD)">/ Khóa học (~$100 USD)</span>
+                            </div>
+                            <ul class="space-y-4 text-left text-slate-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-amber-500 text-xl">★</span>
+                                    <span class="font-bold text-slate-800 lang-text" data-vi="Mọi quyền lợi của gói Thành Viên Cộng Đồng" data-en="All benefits of the Community Member tier">Mọi quyền lợi của gói Thành Viên Cộng Đồng</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-amber-500 text-xl">★</span>
+                                    <span class="lang-text" data-vi="Học nhóm nhỏ (2-4 học viên) cùng Giáo viên Quốc tế" data-en="Small classes (2-4 students) with International Teachers">Học nhóm nhỏ (2-4 học viên) cùng Giáo viên Quốc tế</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-amber-500 text-xl">★</span>
+                                    <span class="lang-text" data-vi="Môi trường thực hành tối đa hóa phản xạ nghe - nói" data-en="Practical environment maximizing listening & speaking reflexes">Môi trường thực hành tối đa hóa phản xạ nghe - nói</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-amber-500 text-xl">★</span>
+                                    <span class="lang-text" data-vi="Luyện nói theo chủ đề linh hoạt, thay đổi hàng tuần" data-en="Flexible topic-based speaking practice, changing weekly">Luyện nói theo chủ đề linh hoạt, thay đổi hàng tuần</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="lg:col-span-12 glass-card rounded-3xl p-8 flex flex-col lg:flex-row items-center gap-10">
+                <div class="lg:w-1/2 w-full">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span>📊</span> 
+                        <span class="lang-text" data-vi="Phân Tích Giá Trị" data-en="Value Analysis">Phân Tích Giá Trị</span>
+                    </h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed lang-text" data-vi="Biểu đồ bên cạnh so sánh mức độ trải nghiệm giữa hai lựa chọn. Lớp Giáo Viên Quốc Tế mang lại môi trường luyện phản xạ tối đa trong nhóm nhỏ, trong khi gói Cộng Đồng tối ưu hóa sự tự chủ và tính linh hoạt." data-en="The chart compares the experience level between the two options. The Int'l Teacher class provides a maximized reflex-training environment in small groups, while the Community package optimizes autonomy and flexibility.">
+                        Biểu đồ bên cạnh so sánh mức độ trải nghiệm giữa hai lựa chọn. Lớp Giáo Viên Quốc Tế mang lại môi trường luyện phản xạ tối đa trong nhóm nhỏ, trong khi gói Cộng Đồng tối ưu hóa sự tự chủ và tính linh hoạt.
+                    </p>
+                    <div class="bg-blue-50 border border-blue-100 p-5 rounded-2xl">
+                        <h4 class="font-bold text-blue-900 mb-2 lang-text" data-vi="Tại sao yêu cầu A2+?" data-en="Why A2+ Required?">Tại sao yêu cầu A2+?</h4>
+                        <p class="text-sm text-blue-800 lang-text" data-vi="Để đảm bảo chất lượng giao tiếp đa văn hóa, người tham gia cần có kiến thức nền tảng để có thể tự tin duy trì cuộc hội thoại cơ bản hoàn toàn bằng tiếng Anh." data-en="To ensure the quality of cross-cultural communication, participants need a foundational knowledge to confidently maintain basic conversations entirely in English.">Để đảm bảo chất lượng giao tiếp đa văn hóa, người tham gia cần có kiến thức nền tảng để có thể tự tin duy trì cuộc hội thoại cơ bản hoàn toàn bằng tiếng Anh.</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="chart-container">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-span-12 glass-card rounded-3xl p-8 sm:p-10 border-t-8 border-slate-900">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4 lang-text" data-vi="Hướng Dẫn Đăng Ký & Thanh Toán" data-en="Registration & Payment Guide">Hướng Dẫn Đăng Ký & Thanh Toán</h2>
+                    <p class="text-slate-600 lang-text" data-vi="Vui lòng hoàn tất phí thành viên qua các kênh dưới đây để nhận liên kết tham gia cộng đồng." data-en="Please complete the membership fee via the channels below to receive the community access link.">Vui lòng hoàn tất phí thành viên qua các kênh dưới đây để nhận liên kết tham gia cộng đồng.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative">
+                        <div class="absolute -top-4 -right-4 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full border border-blue-200 lang-text" data-vi="Học viên Việt Nam" data-en="Local Learners">Học viên Việt Nam</div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="text-3xl">🏦</div>
+                            <h3 class="text-xl font-bold text-slate-800 lang-text" data-vi="Chuyển Khoản Nội Địa" data-en="Domestic Bank Transfer">Chuyển Khoản Nội Địa</h3>
+                        </div>
+                        
+                        <div class="flex flex-col xl:flex-row gap-6 items-center mb-6">
+                            <div class="shrink-0">
+                                <img src="./banking.jpg" alt="QR Code VietinBank" class="w-40 h-40 object-contain rounded-xl border border-slate-200 p-1 bg-white" onerror="this.onerror=null; this.src='https://via.placeholder.com/150?text=QR+Code';">
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-700 w-full">
+                                <li class="flex justify-between border-b border-dashed pb-2">
+                                    <span class="text-slate-500 lang-text" data-vi="Ngân hàng:" data-en="Bank:">Ngân hàng:</span>
+                                    <span class="font-bold text-right">VietinBank - CN Thái Nguyên</span>
+                                </li>
+                                <li class="flex justify-between border-b border-dashed pb-2">
+                                    <span class="text-slate-500 lang-text" data-vi="Chủ tài khoản:" data-en="Account Name:">Chủ tài khoản:</span>
+                                    <span class="font-bold text-right">DINH VAN NAM</span>
+                                </li>
+                                <li class="flex justify-between border-b border-dashed pb-2">
+                                    <span class="text-slate-500 lang-text" data-vi="Số tài khoản:" data-en="Account No:">Số tài khoản:</span>
+                                    <span class="font-bold text-blue-600 text-lg text-right">101005137211</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                            <p class="text-xs text-blue-800 font-bold mb-1 lang-text" data-vi="CÚ PHÁP (Bắt buộc):" data-en="TRANSFER SYNTAX (Required):">CÚ PHÁP (Bắt buộc):</p>
+                            <p class="text-sm font-mono text-slate-800 break-all bg-white p-2 border border-blue-200 inline-block rounded font-bold">
+                                <span class="lang-text" data-vi="[Họ tên] - [SĐT Zalo] - [Gói đăng ký]" data-en="[Full Name] - [WhatsApp/Zalo] - [Package]"> [Họ tên] - [SĐT Zalo] - [Gói đăng ký]</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-8">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative h-full">
+                            <div class="absolute -top-4 -right-4 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-200 lang-text" data-vi="Học viên Quốc tế" data-en="Global Learners">Học viên Quốc tế</div>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="text-3xl text-blue-600 font-black italic">P</div>
+                                <h3 class="text-xl font-bold text-slate-800 lang-text" data-vi="Thanh Toán PayPal" data-en="PayPal Payment">Thanh Toán PayPal</h3>
+                            </div>
+                            <p class="text-slate-600 mb-4 text-sm lang-text" data-vi="Dành cho các thành viên ngoài lãnh thổ Việt Nam thực hiện thanh toán quốc tế." data-en="For members outside of Vietnam to process international payments securely.">Dành cho các thành viên ngoài lãnh thổ Việt Nam thực hiện thanh toán quốc tế.</p>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-bold lang-text" data-vi="Tài khoản PayPal" data-en="PayPal Account">Tài khoản PayPal</p>
+                                    <p class="font-mono text-lg font-bold text-blue-700 mt-1">namdv2586@gmail.com</p>
+                                </div>
+                                <div class="text-3xl">📧</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-800 rounded-2xl p-6 text-white shadow-sm relative h-full overflow-hidden">
+                            <div class="absolute right-0 bottom-0 text-8xl opacity-10 transform translate-x-4 translate-y-4">💬</div>
+                            <div class="relative z-10">
+                                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                                    <span>📞</span> <span class="lang-text" data-vi="Hỗ Trợ Trực Tiếp" data-en="Direct Support">Hỗ Trợ Trực Tiếp</span>
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-amber-400 mt-1">📍</span>
+                                        <div>
+                                            <p class="text-xs text-slate-400 uppercase font-bold lang-text" data-vi="Văn phòng" data-en="Office">Văn phòng</p>
+                                            <p class="text-sm">Nhà 50, ngõ 48, Đường Lê Trọng Tấn, Hà Đông, Hà Nội, Vietnam</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-emerald-400 mt-1">💬</span>
+                                        <div>
+                                            <p class="text-xs text-slate-400 uppercase font-bold">Zalo / WhatsApp / Hotline</p>
+                                            <p class="font-bold text-lg text-emerald-400">+84 988 999 027</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="mt-16 border-t border-slate-200 pt-8 text-center">
+            <div class="text-3xl mb-4">🌍</div>
+            <p class="text-slate-500 lang-text" data-vi="Kết nối thế giới qua từng nhịp nói." data-en="Connecting the world through every spoken word.">Kết nối thế giới qua từng nhịp nói.</p>
+            <p class="font-black mt-2 text-xl text-slate-800 tracking-tight">Lucero English Global</p>
+            <p class="text-xs text-slate-400 mt-4">© 2026 Lucero Education System.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartDataVN = {
+            labels: [
+                "Luyện tập đồng trang lứa", 
+                "Tương tác GV nhóm nhỏ", 
+                "Phát triển phản xạ nói", 
+                "Chủ đề đổi hàng tuần", 
+                "Thời gian linh hoạt"
+            ],
+            basicLabel: "Thành Viên Cộng Đồng",
+            premiumLabel: "Giáo Viên Quốc Tế"
+        };
+
+        const chartDataEN = {
+            labels: [
+                "Peer-to-Peer Practice", 
+                "Small Group with Teacher", 
+                "Speaking Reflex Dev.", 
+                "Weekly Changed Topics", 
+                "Time Flexibility"
+            ],
+            basicLabel: "Community Member",
+            premiumLabel: "International Teachers"
+        };
+
+        let radarChart;
+
+        function initChart(langObj) {
+            const wrappedLabels = langObj.labels.map(label => wrapLabel(label, 15));
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            
+            if (radarChart) {
+                radarChart.destroy();
+            }
+
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: wrappedLabels,
+                    datasets: [
+                        {
+                            label: langObj.premiumLabel,
+                            data: [70, 100, 95, 100, 60],
+                            backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                            borderColor: '#F59E0B',
+                            pointBackgroundColor: '#F59E0B',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#F59E0B',
+                            borderWidth: 2
+                        },
+                        {
+                            label: langObj.basicLabel,
+                            data: [95, 20, 50, 80, 100],
+                            backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                            borderColor: '#2563EB',
+                            pointBackgroundColor: '#2563EB',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#2563EB',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    family: "'Roboto', sans-serif",
+                                    size: 11,
+                                    weight: 'bold'
+                                },
+                                color: '#475569'
+                            },
+                            ticks: {
+                                display: false,
+                                max: 100,
+                                min: 0
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: "'Roboto', sans-serif",
+                                    size: 12
+                                },
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        },
+                        tooltip: tooltipConfig
+                    }
+                }
+            });
+        }
+
+        initChart(chartDataVN);
+
+        const langToggle = document.getElementById('langToggle');
+        
+        langToggle.addEventListener('change', function() {
+            const isEnglish = this.checked;
+            const targetLang = isEnglish ? 'en' : 'vi';
+            
+            document.querySelectorAll('.lang-text').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${targetLang}`);
+            });
+
+            if (isEnglish) {
+                initChart(chartDataEN);
+            } else {
+                initChart(chartDataVN);
+            }
+        });
+    </script>
+</body>
+</html>
